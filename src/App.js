@@ -27,6 +27,7 @@ class App extends React.Component{
         { id: '6', name: 'other' },
     ],
     purposeOfConsultation: '',
+    purposeOfConsultationReason : '',
             booleanPurposeOfConsultation: false,
             booleanExistingConditions: false,
             hadBaby: '',
@@ -105,8 +106,6 @@ handlePurposeOfConsultations = (e) => {
   this.setState({
     purposeOfConsultation : purposeOfConsultation
   })
-  
-  
 }
 
 handleBabyChange = (e) => {
@@ -207,13 +206,25 @@ handleSubmit = (e) => {
           <label>&#8226;&nbsp;Select the option that best describes your purpose of consultation.</label><br></br>
             
             </Col>
-            <Col md = "6" >
+            <Col md = "5" >
             <Input type="select" name="select" id="exampleSelect" onChange = {this.handlePurposeOfConsultations} >
+              <option>Select your purpose of consultation.</option>
     {this.state.purposeOfConsultations.map(consultation => <option key = {consultation.id} >{consultation.name}</option> )}
         </Input>
             </Col>
+            
+        {
+          (this.state.purposeOfConsultation == "other") && (
+            <Col md = "3" >
+            <label htmlFor = "purposeOfConsultationReason" >Please specify the reason</label>
+            <input type = "text" width = "100%" name = "purposeOfConsultationReason" value = {this.state.purposeOfConsultationReason} onChange = {this.handleInputChange} ></input>
+            </Col>
+          )
+        }
+
          </Row>
 
+        <br></br>
         <br></br>
         <Row>
           <Col md = "4" >
@@ -227,8 +238,14 @@ handleSubmit = (e) => {
             {/* </div> */}
             </Col>
          </Row>
-        
-
+          <br></br>
+        {
+          (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && (
+            <div>
+              
+            </div>
+          )
+        }
 
          <br></br>
          <Button type = "submit" color="info">SUBMIT</Button>{' '}
