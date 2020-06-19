@@ -67,8 +67,20 @@ class App extends React.Component{
             moreThanSixCycles: false,
             countinuosFlow: false,
             lastPeriodTime: '',
+
+            medicationDiabetes : false,
+            medicationHighBloodPressure : false,
+            medicationMentalHealthDisorder : false,
+            
             currentlyNotUnderAnyMedication: false,
             migrane: false,
+
+
+
+            workoutValue : '',
+            workoutHour : '',
+
+            eatingFoodValue : '',
 
             sleepHour : '',
 
@@ -135,6 +147,18 @@ handleExistionConditionsChange = (e) => {
     this.setState({
       [e.target.name] : e.target.checked
     })
+}
+
+handleEatingFoodValue = (e) => {
+  this.setState({
+    eatingFoodValue : e.target.value
+  })
+}
+
+handleWorkoutValue = (e) => {
+  this.setState({
+    workoutValue : e.target.value
+  })
 }
 
 handleSubmit = (e) => {
@@ -327,6 +351,55 @@ handleSubmit = (e) => {
 
          <br></br>
 
+         <Row>  
+         <Col md = "4" >
+          <label >&#8226;&nbsp;Are you taking medications for any of the following conditions?</label>
+            </Col>
+
+         </Row>
+          <br></br>
+          <br></br>
+         <Row>
+          <Col md = "4" >
+          <label >&#8226;&nbsp;Do you work out for more than 2.5 hours or 150 minutes per week?</label>
+            </Col>
+            <Col md = "4" >
+            <input type = "radio" name = "baby" value = "Yes" onChange = {this.handleWorkoutValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
+              <input type = "radio" name = "baby" value = "No" onChange = {this.handleWorkoutValue} /><label>&nbsp; No</label>
+            </Col>
+            <Col md = "4">
+              {
+                (this.state.workoutValue == "No") && (
+                  <React.Fragment>
+                    <label>For how many hours per week?</label> 
+                    <input type = "text" name = "workoutHour" value = {this.state.workoutHour} onChange = {this.handleNumberInputChange} />
+                  </React.Fragment>
+                )
+              }
+            </Col>
+         </Row>
+
+         <br></br>
+
+         <Row>
+          <Col md = "4" >
+          <label >&#8226;&nbsp;Do eat any of the following more than twice a week?</label>
+          <br></br><ul>
+            <li>Sugary food</li>
+            <li>Soft-Drinks</li>
+            <li>Bakery Items</li>
+            <li>Processed food</li>
+            <li>Fried Food</li>
+            <li>Desserts</li>
+          </ul>
+            </Col>
+            <Col md = "6" >
+            <input type = "radio" name = "baby" value = "Yes" onChange = {this.handleEatingFoodValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
+              <input type = "radio" name = "baby" value = "No" onChange = {this.handleEatingFoodValue} /><label>&nbsp; No</label>
+            </Col>
+         </Row>
+                
+          <br></br>
 
          <Row>
           <Col md = "4" >
@@ -366,6 +439,8 @@ handleSubmit = (e) => {
             </div>
           )
         }
+
+        <br></br>
 
         <Row>
           <Col md = "4" >
