@@ -68,9 +68,26 @@ class App extends React.Component{
             countinuosFlow: false,
             lastPeriodTime: '',
             currentlyNotUnderAnyMedication: false,
-            diabetes: false,
             migrane: false,
+
+            sleepHour : '',
+
             highBloodPressure: false,
+            highCholesterol : false,
+            familyHypothyroidism : false,
+            diabetes: false,
+            pcos : false,
+
+            reportFirst : '',
+            reportSecond : '',
+
+            otherExtraDetailForDoctor : '',
+
+            nutritionExpert : false,
+            yogaTherapist : false,
+            dermatologist : false,
+            psychiatrist : false,
+
             mentalDisorder: false,
             steriodTherapy: false,
             seizureFit: false,
@@ -255,13 +272,13 @@ handleSubmit = (e) => {
                 <Col md = "4" >
                   <label>Select Conditions</label>
                   <br></br>
-                  <input type = "checkbox" name = "hyperprolactemian" value = "Hyperprolactemia"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hyperprolactemia</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "highBloodPressure" value = "highBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hyperprolactemia</label>
                   <br></br> <br></br>
-                  <input type = "checkbox" name = "pcosPcod" value = "PCOS/PCOD" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>PCOS/PCOD</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "pcosPcod" value = "PCOS/PCOD" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>PCOS/PCOD</label>
                   <br></br> <br></br>
-                  <input type = "checkbox" name = "hypothyroidism" value = "Hypothyroidism" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hypothyroidism</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "hypothyroidism" value = "Hypothyroidism" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hypothyroidism</label>
                   <br></br> <br></br>
-                  <input type = "checkbox" name = "otherCondition" value = "other" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>other</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "otherCondition" value = "other" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>other</label>
                   <br></br> <br></br>
                   {(this.state.otherCondition == true && (<input type = "text" name = "otherConditionName" value = {this.state.otherConditionName} onChange = {this.handleInputChange} placeholder = "Mention Condition" />))}
                 </Col>
@@ -288,7 +305,7 @@ handleSubmit = (e) => {
                 </Col>  
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.Hypothyroidism || this.state.otherConditio == true) && (
+                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
                     <React.Fragment>
                       <label>Duration of the Condition</label>
                       <br></br>
@@ -307,9 +324,101 @@ handleSubmit = (e) => {
               </Row>
             </Col>
          </Row>
+
+         <br></br>
+
+
+         <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;How many hours of sleep do you get in a day?</label>      
+            </Col>
+            <Col md = "6" >
+                <input type = "text" name = "sleepHour" value = {this.state.sleepHour} onChange = {this.handleNumberInputChange} /> &nbsp;&nbsp;<label>Hours</label>
+            </Col>
+         </Row>
+
+         <br></br>
+
+         <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;Please enter any health conditions in your family members.<br></br>
+          (Straight blood relatives only)</label><br></br>
+          <span>* &nbsp;This information is important for diagnosis to highlight any risks and possible complications.</span>
+            
+            </Col>
+            <Col md = "6" >
+            <label>Select Conditions</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "highBloodPressure" value = "highBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>High Blood Pressure</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "highCholesterol" value = "highCholesterol" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>High Cholesterol</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "familyHypothyroidism" value = "familyHypothyroidism" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hypothyroidism</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "diabetes" value = "diabetes" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Diabetes</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "pcos" value = "pcos" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>PCOS</label>
+                  <br></br> 
+            </Col>
+         </Row>
+
+         
             </div>
           )
         }
+
+        <Row>
+          <Col md = "4" >
+          <label htmlFor = "reportFirst" >&#8226;&nbsp;Please upload reports of recent blood tests or ultrasounds taken with 3 months</label>      
+            </Col>
+            <Col md = "6" >
+            <Input type="file" name="file" id="reportFirst" />
+            </Col>
+         </Row>
+
+         <br></br>
+
+         <Row>
+          <Col md = "4" >
+          <label htmlFor = "reportSecond" >&#8226;&nbsp;Please upload prescriptions of any treatments you might be undergoing.</label>      
+            </Col>
+            <Col md = "6" >
+            <Input type="file" name="file" id="reportSecond" />
+            </Col>
+         </Row>
+
+         <br></br>
+
+         <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;Please enter any other detail you might want the doctor to know.</label>      
+            </Col>
+            <Col md = "6" >
+                <Input type = "textarea" name = "otherExtraDetailForDoctor" value = {this.state.otherExtraDetailForDoctor} onChange = {this.handleNumberInputChange} />
+            </Col>
+         </Row>
+         <br></br>
+
+         <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;At Proactive, we focus on a multidisciplinary approach to obtain the best outcome and healthcare experience for our patients. <br></br>
+          (Please select if you would like any additional support or guidance from any of our other experts..)</label>
+
+            </Col>
+            <Col md = "6" >
+            <label>Select Your Options</label>
+                  <br></br>
+                  &nbsp; &nbsp;<Input type = "checkbox" name = "nutritionExpert" value = "nutritionExpert"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Nutrition expert</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "yogaTherapist" value = "yogaTherapist" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Yoga Therapist</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "dermatologist" value = "dermatologist" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Dermatologist</label>
+                  <br></br>
+                   &nbsp; &nbsp;<Input type = "checkbox" name = "psychiatrist" value = "psychiatrist" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Psychiatrist</label>
+                  <br></br> 
+            </Col>
+         </Row>
+        
 
          <br></br>
          <Button type = "submit" color="info">SUBMIT</Button>{' '}
