@@ -16,6 +16,7 @@ class App extends React.Component{
       weight : '',
       heightFeet : '',
       heightInch : '',
+      waistSize : '',
       hipSize : '',
       purposeOfConsultations: [
         { id: '1', name: 'I want to know why I might have gained weight' },
@@ -103,6 +104,14 @@ handleNumberInputChange = (e) => {
   }
 }
 
+handlePurposeOfConsultations = (e) => {
+  const purposeOfConsultation = e.target.value
+  this.setState({
+    purposeOfConsultation : purposeOfConsultation
+  })
+  
+}
+
   render(){
     return(
       <div>
@@ -170,12 +179,12 @@ handleNumberInputChange = (e) => {
             <Col md = "8" >
               <Row>
                 <Col md = "6" > 
-                <label>Waise size (inches) </label><br></br>
-                <input type = "text" />
+                <label htmlFor = "waistSize" >Waise size (inches) </label><br></br>
+                <input type = "text" name = "waistSize" id = "waistSize" value = {this.state.waistSize} onChange = {this.handleNumberInputChange} />
                 </Col>
                 <Col md = "6" > 
-                <label>Hip size (inches) </label><br></br>
-                <input type = "text" />
+                <label htmlFor = "hipSize" >Hip size (inches) </label><br></br>
+                <input type = "text" name = "hipSize" id = "hipSize" value = {this.state.hipSize} />
                 </Col>
               </Row>
             </Col>
@@ -188,12 +197,8 @@ handleNumberInputChange = (e) => {
             
             </Col>
             <Col md = "6" >
-            <Input type="select" name="select" id="exampleSelect">
-              <option>I want to know why I might have gained weight</option>
-              <option>I am more concerned about future risks from this weight</option>
-              <option>I want to prepare my body for the conception</option>
-              <option>Need to get my prescription renewed</option>
-              <option>Need to get a second opinion</option>
+            <Input type="select" name="select" id="exampleSelect" onChange = {this.handlePurposeOfConsultations} >
+    {this.state.purposeOfConsultations.map(consultation => <option key = {consultation.id} >{consultation.name}</option> )}
         </Input>
             </Col>
          </Row>
