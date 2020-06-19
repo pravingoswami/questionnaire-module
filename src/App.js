@@ -68,10 +68,13 @@ class App extends React.Component{
             countinuosFlow: false,
             lastPeriodTime: '',
 
+            steroidTherapy : false,
+            hormonalContraception : false,
+            seizureFit : false,
+            proteinSupplements : false,
             medicationDiabetes : false,
             medicationHighBloodPressure : false,
             medicationMentalHealthDisorder : false,
-            
             currentlyNotUnderAnyMedication: false,
             migrane: false,
 
@@ -355,8 +358,37 @@ handleSubmit = (e) => {
          <Col md = "4" >
           <label >&#8226;&nbsp;Are you taking medications for any of the following conditions?</label>
             </Col>
+              <Col md = "4" >
+              <label>Select Conditions</label>
+                  <br></br>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "currentlyNotUnderAnyMedication" value = "currentlyNotUnderAnyMedication"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Currently not under medication</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationDiabetes" value = "medicationDiabetes"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Diabetes </label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "migrane" value = "migrane"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Migraine</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationHighBloodPressure" value = "medicationHighBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>High Blood pressure </label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationMentalHealthDisorder" value = "medicationMentalHealthDisorder"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Mental health disorder</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "steroidTherapy" value = "steroidTherapy"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Steroid therapy</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "hormonalContraception" value = "hormonalContraception"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hormonal Contraception</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "seizureFit" value = "seizureFit"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Seizure / Fit</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "proteinSupplements" value = "proteinSupplements"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Protein Supplements</label>
+                  <br></br> <br></br>
+              </Col>
+
+                <Col md = "4">
+                  
+                </Col>
+
 
          </Row>
+                
+
           <br></br>
           <br></br>
          <Row>
