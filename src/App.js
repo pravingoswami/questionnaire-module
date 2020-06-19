@@ -31,15 +31,15 @@ class App extends React.Component{
             booleanPurposeOfConsultation: false,
             booleanExistingConditions: false,
             hadBaby: '',
-            existionConditions: [],
-            pcosPcod: false,
+            hyperprolactemia : false,
+            pcosPcod : false,
+            hypothyroidism : false,
             pcosPcodTime: '',
-            hypothyroidism: false,
             hypothyroidismTime: '',
-            hyperprolactemia: false,
             hyperprolactemiaTime: '',
             booleanOtherCondition: false, // if and only if booleanOtherCondition is true then only the other condition data will be sent 
-            otherCondition: '',
+            otherCondition: false,
+            otherConditionName : '',
             otherConditionTime: '',
             weightGainedTime: '',
             weightGained: '',
@@ -114,6 +114,12 @@ handleBabyChange = (e) => {
   })
 }
 
+handleExistionConditionsChange = (e) => {
+    this.setState({
+      [e.target.name] : e.target.checked
+    })
+}
+
 handleSubmit = (e) => {
   e.preventDefault()
   console.log(this.state)
@@ -145,9 +151,7 @@ handleSubmit = (e) => {
                 <label htmlFor = "email" >Email</label>&nbsp;&nbsp;
                 <br></br>
                 <input type = "text" name = "email" id = "email" value = {this.state.email} onChange = {this.handleInputChange} />
-                </Col>
-                
-           
+                </Col>    
               </Row>
             </Col>
          </Row>
@@ -242,7 +246,67 @@ handleSubmit = (e) => {
         {
           (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && (
             <div>
-              
+               <Row>
+          <Col md = "4" >
+        <label>  &#8226; &nbsp; Please select from this list all existing condition(s) that you have.</label>
+            </Col>
+            <Col md = "8" >
+              <Row>
+                <Col md = "4" >
+                  <label>Select Conditions</label>
+                  <br></br>
+                  <input type = "checkbox" name = "hyperprolactemian" value = "Hyperprolactemia"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hyperprolactemia</label>
+                  <br></br> <br></br>
+                  <input type = "checkbox" name = "pcosPcod" value = "PCOS/PCOD" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>PCOS/PCOD</label>
+                  <br></br> <br></br>
+                  <input type = "checkbox" name = "hypothyroidism" value = "Hypothyroidism" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hypothyroidism</label>
+                  <br></br> <br></br>
+                  <input type = "checkbox" name = "otherCondition" value = "other" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>other</label>
+                  <br></br> <br></br>
+                  {(this.state.otherCondition == true && (<input type = "text" name = "otherConditionName" value = {this.state.otherConditionName} onChange = {this.handleInputChange} placeholder = "Mention Condition" />))}
+                </Col>
+                <Col md = "4" > 
+                {
+                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
+                    <React.Fragment>
+                          <label>Severity of the Condition</label>
+                          <br></br>
+                          {(this.state.hyperprolactemian == true) && (<label>Slider</label>)}
+                          <br></br> <br></br>
+                          {(this.state.pcosPcod == true) && (<label>Slider</label>)}
+                          <br></br> <br></br>
+                          {(this.state.hypothyroidism == true) && (<label>Slider</label>)}
+                          <br></br> <br></br>
+                          {(this.state.otherCondition == true) && (<label>Slider</label>)}
+                          <br></br> <br></br>
+
+                    </React.Fragment>
+                  )
+                    
+                }
+                  
+                </Col>  
+                <Col md = "4" > 
+                {
+                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.Hypothyroidism || this.state.otherConditio == true) && (
+                    <React.Fragment>
+                      <label>Duration of the Condition</label>
+                      <br></br>
+                      {(this.state.hyperprolactemian == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
+                      <br></br> <br></br>
+                      {(this.state.pcosPcod == true) && (<input type = "text" name = "pcosPcodTime" placeholder = "PCOS/PCOD" value = {this.state.pcosPcodTime} onChange = {this.handleInputChange} />)}
+                      <br></br> <br></br>
+                      {(this.state.hypothyroidism == true) && (<input type = "text" name = "hypothyroidismTime" placeholder = "Hypothyroidism" value = {this.state.hypothyroidismTime} onChange = {this.handleInputChange} />)}
+                      <br></br> <br></br>
+                      {(this.state.otherCondition == true) && (<input type = "text" name = "otherConditionTime" placeholder = "Other" value = {this.state.otherConditionTime} onChange = {this.handleInputChange} />)}
+                      <br></br> <br></br>
+                    </React.Fragment>
+                  )
+                }
+                </Col>      
+              </Row>
+            </Col>
+         </Row>
             </div>
           )
         }
