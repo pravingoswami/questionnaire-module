@@ -84,10 +84,6 @@ class App extends React.Component{
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.state)
-  }
 
   handleDateChange = (birthDate) => {
     console.log(birthDate)
@@ -110,7 +106,20 @@ handlePurposeOfConsultations = (e) => {
     purposeOfConsultation : purposeOfConsultation
   })
   
+  
 }
+
+handleBabyChange = (e) => {
+  this.setState({
+    hadBaby : e.target.value
+  })
+}
+
+handleSubmit = (e) => {
+  e.preventDefault()
+  console.log(this.state)
+}
+
 
   render(){
     return(
@@ -170,6 +179,7 @@ handlePurposeOfConsultations = (e) => {
               </Row>
             </Col>
          </Row>
+
         <br></br>
          <Row>
           <Col md = "4" >
@@ -189,6 +199,7 @@ handlePurposeOfConsultations = (e) => {
               </Row>
             </Col>
          </Row>
+
           <br></br>
           <br></br>
          <Row>
@@ -202,6 +213,23 @@ handlePurposeOfConsultations = (e) => {
         </Input>
             </Col>
          </Row>
+
+        <br></br>
+        <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;Are you someone who has had a baby within the last one year?</label><br></br>
+            
+            </Col>
+            <Col md = "6" >
+            {/* <div onChange = {this.handleBabyChange} > */}
+            <input type = "radio" name = "baby" value = "Yes" onChange = {this.handleBabyChange} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
+              <input type = "radio" name = "baby" value = "No" onChange = {this.handleBabyChange} /><label>&nbsp; No</label>
+            {/* </div> */}
+            </Col>
+         </Row>
+        
+
+
          <br></br>
          <Button type = "submit" color="info">SUBMIT</Button>{' '}
          </form>
