@@ -94,7 +94,7 @@ class App extends React.Component{
             otherSymptomTimeType : 'Days',
 
 
-            StoppedPeriods: false,
+            stoppedPeriods: false,
             lessThanSixCycles: false,
             moreThanSixCycles: false,
             countinuosFlow: false,
@@ -729,19 +729,44 @@ handleSubmit = (e) => {
                   }
                   </Col>
               </Row>
+              <br></br>
+              <br></br>
               <Row>
-                <col md = "4">
-                {(this.state.missedPeriods == true) && <label >&#8226;&nbsp;In relation to your menstrual problems, please select all statements that apply to you","IGNORE SECTION</label>}
-                </col>
-                <col md = "4">
+                <Col md = "4">
+                {(this.state.missedPeriods == true) && <label >&#8226;&nbsp;In relation to your menstrual problems, please select all statements that apply to you</label>}
+                </Col>
+                <Col md = "4">
                 {(this.state.missedPeriods == true) && <React.Fragment>
-                   &nbsp; &nbsp;<input type = "checkbox" name = "hairLoss" value = "hairLoss"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Hair Fall / Hair Loss</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "stoppedPeriods" value = "stoppedPeriods"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > Stopped getting menstrual periods </label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "lessThanSixCycles" value = "lessThanSixCycles"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > Less than 6 cycles a year </label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "moreThanSixCycles" value = "moreThanSixCycles"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > More than 6 cycles a year </label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "countinuosFlow" value = "countinuosFlow"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > Continuous flow for more than 7 days </label>
                   <br></br> <br></br>
                 </React.Fragment> }
-                </col>
-                <col md = "4">
-                  
-                </col>
+                </Col>
+                <Col md = "4">
+                        {
+                          (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && <React.Fragment>
+                                              <label>How many days ago was your last menstrual period</label>
+                  <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "lastPeriodTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="lastPeriodTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                          </React.Fragment>
+                        }
+                </Col>
               </Row>
               </div>
             )
