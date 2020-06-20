@@ -751,10 +751,11 @@ handleSubmit = (e) => {
                         {
                           (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && <React.Fragment>
                                               <label>How many days ago was your last menstrual period</label>
-                  <Row>
+                          <Row>
                           <Col md = "6">
                           <Input type = "text" name = "lastPeriodTime" onChange = {this.handleInputChange} />
                           </Col>
+                          
                           <Col md = "6">
                               
                         <Input type="select" name="lastPeriodTimeType" id="medication" onChange = {this.handleDurationValueChange} >
