@@ -38,36 +38,68 @@ class App extends React.Component{
             pcosPcodTime: '',
             hypothyroidismTime: '',
             hyperprolactemiaTime: '',
+
+            hyperprolactemiaTimeType : 'Days',
+            pcosPcodTimeType : 'Days',
+            hypothyroidismTimeType : 'Days',
+            otherConditionNameType : 'Days',
+
+            
             booleanOtherCondition: false, // if and only if booleanOtherCondition is true then only the other condition data will be sent 
             otherCondition: false,
             otherConditionName : '',
             otherConditionTime: '',
+
+            anyOtherSymptoms : '',
+
             weightGainedTime: '',
             weightGained: '',
+            weightGainedTimeType : 'Days',
+
             // section 5 states
             hairLoss: false,
             hairLossTime: '',
+            hairLossTimeType : 'Days',
+
             acne: false,
             acneTime: '',
+            acneTimeType : 'Days',
+
             missedPeriods: false,
             missedPeriodsTime: '',
+            missedPeriodsTimeType : 'Days',
+
             extraHair: false,
             extraHairTime: '',
+            extraHairTimeType : 'Days',
+            
             constipation: false,
+
             skinPigmentation: false,
+
             slowHeartbeat: false,
+
             headache: false,
             headacheTime: '',
+            headacheTimeType : 'Days',
+
             dischargeNipple: false,
+
             moodSwings: false,
+
             booleanOtherSymptom: false,
+
             otherSymptom: '',
             otherSymptomTime: '',
+            otherSymptomTimeType : 'Days',
+
+
             StoppedPeriods: false,
             lessThanSixCycles: false,
             moreThanSixCycles: false,
             countinuosFlow: false,
             lastPeriodTime: '',
+            lastPeriodTimeType : 'Days',
 
             steroidTherapy : false,
             hormonalContraception : false,
@@ -145,7 +177,7 @@ class App extends React.Component{
 };
 
 handleNumberInputChange = (e) => {
-  if(isNaN(e.target.value)){
+  if(!isNaN(e.target.value)){
     return alert('Enter valid input')
   } else {
     this.setState({
@@ -341,7 +373,7 @@ handleSubmit = (e) => {
                 </Col>
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
+                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
                     <React.Fragment>
                           <label>Severity of the Condition</label>
                           <br></br>
@@ -363,18 +395,107 @@ handleSubmit = (e) => {
                 </Col>  
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
+                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
                     <React.Fragment>
                       <label>Duration of the Condition</label>
                       <br></br>
-                      {(this.state.hyperprolactemia == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
-                      <br></br> <br></br>
+                      {/* {(this.state.hyperprolactemia == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
+                      <br></br> <br></br> */}
+
+                      {
+                    (this.state.hyperprolactemia == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "hyperprolactemiaTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="hyperprolactemiaTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{
+                    (this.state.pcosPcod == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "pcosPcodTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="pcosPcodTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{
+                    (this.state.hypothyroidism == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "hypothyroidismTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="hypothyroidismTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+                         {
+                    (this.state.otherCondition == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "otherConditionTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="otherConditionTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{/* 
                       {(this.state.pcosPcod == true) && (<input type = "text" name = "pcosPcodTime" placeholder = "PCOS/PCOD" value = {this.state.pcosPcodTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
                       {(this.state.hypothyroidism == true) && (<input type = "text" name = "hypothyroidismTime" placeholder = "Hypothyroidism" value = {this.state.hypothyroidismTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
                       {(this.state.otherCondition == true) && (<input type = "text" name = "otherConditionTime" placeholder = "Other" value = {this.state.otherConditionTime} onChange = {this.handleInputChange} />)}
-                      <br></br> <br></br>
+                      <br></br> <br></br> */}
                     </React.Fragment>
                   )
                 }
@@ -382,8 +503,252 @@ handleSubmit = (e) => {
               </Row>
             </Col>
          </Row>
+                <br></br>
+
+           {
+              (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+                <Row>
+                  <Col md = "4" >
+          <label>&#8226;&nbsp;Any symptoms that you are particularly concerned about?</label>      
+            </Col>
+            <Col md = "6" >
+                <input type = "text" name = "anyOtherSymptoms" value = {this.state.anyOtherSymptoms} onChange = {this.handleInputChange} />
+            </Col>
+            
+                </Row>
+              )
+           }
 
          <br></br>
+         
+         <Row>
+          <Col md = "4" >
+          <label>&#8226;&nbsp;Please enter how much weight you gained and in how much time</label>      
+            </Col>
+            <Col md = "4" >
+                <input type = "text" name = "weightGained" value = {this.state.weightGained} onChange = {this.handleNumberInputChange} /> &nbsp;&nbsp;<label>Kgs</label>
+
+
+            </Col>
+            
+            <Col md = "4">
+                          <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "weightGained" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="weightGainedType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                          </Row>
+                        </Col>
+         </Row>
+         <br></br>
+         <br></br>
+
+         {
+            (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+              <div>
+              <Row>
+                <Col md = "4" >
+                <label >&#8226;&nbsp;Ignore Section</label>
+                </Col>
+
+                <Col md = "4" >
+                <label>Symptom</label>
+                  <br></br>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "hairLoss" value = "hairLoss"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Hair Fall / Hair Loss</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "acne" value = "acne"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Acene</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "missedPeriods" value = "missedPeriods"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Missed / Iregular Period / Heavy Bleeding</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "extraHair" value = "extraHair"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Extra Hair Growth on Body and Face</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "constipation" value = "constipation"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Constipation</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "skinPigmentation" value = "skinPigmentation"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Skin Pigmentation / Thickness / Dryness</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "slowHeartbeat" value = "slowHeartbeat"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Slow / Fast Heartbeat</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "headache" value = "headache"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Headache</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "dischargeNipple" value = "dischargeNipple"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Discharge from Nipple</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "moodSwings" value = "moodSwings"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Mood Swings / Lethargy / Sluggishness</label>
+                  <br></br> <br></br>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "booleanOtherSymptom" value = "booleanOtherSymptom"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Others</label>
+                  <br></br> 
+                  {(this.state.booleanOtherSymptom == true && (<input type = "text" name = "otherSymptom" value = {this.state.otherSymptom} onChange = {this.handleInputChange} placeholder = "Mention Symptom" />))}
+                  </Col>
+
+                  <Col md = "4" >
+                    {
+                      (this.state.hairLoss == true || this.state.acne == true || this.state.missedPeriods == true || this.state.extraHair == true || this.state.headache == true || this.state.otherSymptom == true ) && (
+                        <label>Since how long have you been experiencing this symptom?</label>
+                      )
+                    }
+
+                  {
+                    (this.state.hairLoss == true) && (
+                      <div>
+                     
+<br></br>
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "hairLossTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="hairLossTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{
+                    (this.state.acne == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "acneTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="acneTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+
+{
+                    (this.state.missedPeriods == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "missedPeriodsTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="missedPeriodsTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{
+                    (this.state.extraHair == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "extraHairTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="extraHairTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+{
+                    (this.state.headache == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "headacheTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="headacheTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+
+                  
+{
+                    (this.state.booleanOtherSymptom == true) && (
+                      <div>
+
+                        <Row>
+                          <Col md = "6">
+                          <Input type = "text" name = "otherSymptomTime" onChange = {this.handleInputChange} />
+                          </Col>
+                          <Col md = "6">
+                              
+                        <Input type="select" name="otherSymptomTimeType" id="medication" onChange = {this.handleDurationValueChange} >
+                        <option name = "duration" value = "Days" >Days</option>
+                        <option name = "duration" value = "Months" >Months</option>
+                        <option name = "duration" value = "Years" >Years</option>
+                            </Input>
+                            </Col>
+                        </Row>
+                        <br></br>
+                      </div>
+                    )
+                  }
+                  </Col>
+              </Row>
+              <Row>
+                <col md = "4">
+                {(this.state.missedPeriods == true) && <label >&#8226;&nbsp;In relation to your menstrual problems, please select all statements that apply to you","IGNORE SECTION</label>}
+                </col>
+                <col md = "4">
+                {(this.state.missedPeriods == true) && <React.Fragment>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "hairLoss" value = "hairLoss"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Hair Fall / Hair Loss</label>
+                  <br></br> <br></br>
+                </React.Fragment> }
+                </col>
+                <col md = "4">
+                  
+                </col>
+              </Row>
+              </div>
+            )
+         }
+
+  <br></br>
+  <br></br>
 
          <Row>  
          <Col md = "4" >
@@ -561,7 +926,6 @@ handleSubmit = (e) => {
     </div>
   )
 }
-
 
 
 
