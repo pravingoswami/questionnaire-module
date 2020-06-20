@@ -31,6 +31,7 @@ class App extends React.Component{
             booleanPurposeOfConsultation: false,
             booleanExistingConditions: false,
             hadBaby: '',
+
             hyperprolactemia : false,
             pcosPcod : false,
             hypothyroidism : false,
@@ -78,6 +79,26 @@ class App extends React.Component{
             currentlyNotUnderAnyMedication: false,
             migrane: false,
 
+            steroidTherapyDuration : '',
+            hormonalContraceptionDuration : '',
+            seizureFitDuration : '',
+            proteinSupplementsDuration : '',
+            medicationDiabetesDuration : '',
+            medicationHighBloodPressureDuration : '',
+            medicationMentalHealthDisorderDuration : '',
+            currentlyNotUnderAnyMedicationDuration : '',
+            migraneDuration : '',
+
+            steroidTherapyDurationType : 'Days',
+            hormonalContraceptionDurationType : 'Days',
+            seizureFitDurationType : 'Days',
+            proteinSupplementsDurationType : 'Days',
+            medicationDiabetesDurationType : 'Days',
+            medicationHighBloodPressureDurationType : 'Days',
+            medicationMentalHealthDisorderDurationType : 'Days',
+            currentlyNotUnderAnyMedicationDurationType : 'Days',
+            migraneDurationType : 'Days',
+
 
 
             workoutValue : '',
@@ -124,12 +145,12 @@ class App extends React.Component{
 };
 
 handleNumberInputChange = (e) => {
-  if(!isNaN(e.target.value)){
+  if(isNaN(e.target.value)){
+    return alert('Enter valid input')
+  } else {
     this.setState({
       [e.target.name] : e.target.value
     })
-  } else {
-    alert('Enter valid input')
   }
 }
 
@@ -161,6 +182,14 @@ handleEatingFoodValue = (e) => {
 handleWorkoutValue = (e) => {
   this.setState({
     workoutValue : e.target.value
+  })
+}
+
+
+handleDurationValueChange = (e) => {
+  console.log(e.target.name)
+  this.setState({
+    [e.target.name] : e.target.value
   })
 }
 
@@ -299,7 +328,7 @@ handleSubmit = (e) => {
                 <Col md = "4" >
                   <label>Select Conditions</label>
                   <br></br>
-                   &nbsp; &nbsp;<input type = "checkbox" name = "highBloodPressure" value = "highBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hyperprolactemia</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "hyperprolactemia" value = "hyperprolactemia" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hyperprolactemia</label>
                   <br></br> <br></br>
                    &nbsp; &nbsp;<input type = "checkbox" name = "pcosPcod" value = "PCOS/PCOD" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>PCOS/PCOD</label>
                   <br></br> <br></br>
@@ -308,14 +337,15 @@ handleSubmit = (e) => {
                    &nbsp; &nbsp;<input type = "checkbox" name = "otherCondition" value = "other" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>other</label>
                   <br></br> <br></br>
                   {(this.state.otherCondition == true && (<input type = "text" name = "otherConditionName" value = {this.state.otherConditionName} onChange = {this.handleInputChange} placeholder = "Mention Condition" />))}
+                  <br></br>
                 </Col>
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
+                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
                     <React.Fragment>
                           <label>Severity of the Condition</label>
                           <br></br>
-                          {(this.state.hyperprolactemian == true) && (<label>Slider</label>)}
+                          {(this.state.hyperprolactemia == true) && (<label>Slider</label>)}
                           <br></br> <br></br>
                           {(this.state.pcosPcod == true) && (<label>Slider</label>)}
                           <br></br> <br></br>
@@ -328,15 +358,16 @@ handleSubmit = (e) => {
                   )
                     
                 }
-                  
+                  <br></br>
+                  <br></br>
                 </Col>  
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemian == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
+                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherConditio == true) && (
                     <React.Fragment>
                       <label>Duration of the Condition</label>
                       <br></br>
-                      {(this.state.hyperprolactemian == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
+                      {(this.state.hyperprolactemia == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
                       {(this.state.pcosPcod == true) && (<input type = "text" name = "pcosPcodTime" placeholder = "PCOS/PCOD" value = {this.state.pcosPcodTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
@@ -358,31 +389,259 @@ handleSubmit = (e) => {
          <Col md = "4" >
           <label >&#8226;&nbsp;Are you taking medications for any of the following conditions?</label>
             </Col>
-              <Col md = "4" >
-              <label>Select Conditions</label>
+              <Col md = "4"  >
+            <label>Select Conditions</label>
                   <br></br>
-                   &nbsp; &nbsp;<input type = "checkbox" name = "currentlyNotUnderAnyMedication" value = "currentlyNotUnderAnyMedication"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Currently not under medication</label>
+                   &nbsp; &nbsp;<input type = "checkbox" name = "currentlyNotUnderAnyMedication" value = "currentlyNotUnderAnyMedication"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Currently not under medication</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationDiabetes" value = "medicationDiabetes"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Diabetes </label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationDiabetes" value = "medicationDiabetes"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Diabetes </label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "migrane" value = "migrane"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Migraine</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "migrane" value = "migrane"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Migraine</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationHighBloodPressure" value = "medicationHighBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>High Blood pressure </label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationHighBloodPressure" value = "medicationHighBloodPressure"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >High Blood pressure </label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationMentalHealthDisorder" value = "medicationMentalHealthDisorder"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Mental health disorder</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "medicationMentalHealthDisorder" value = "medicationMentalHealthDisorder"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Mental health disorder</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "steroidTherapy" value = "steroidTherapy"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Steroid therapy</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "steroidTherapy" value = "steroidTherapy"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Steroid therapy</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "hormonalContraception" value = "hormonalContraception"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Hormonal Contraception</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "hormonalContraception" value = "hormonalContraception"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Hormonal Contraception</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "seizureFit" value = "seizureFit"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Seizure / Fit</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "seizureFit" value = "seizureFit"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Seizure / Fit</label>
                   <br></br> <br></br>
-                  &nbsp; &nbsp;<input type = "checkbox" name = "proteinSupplements" value = "proteinSupplements"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>Protein Supplements</label>
+                  &nbsp; &nbsp;<input type = "checkbox" name = "proteinSupplements" value = "proteinSupplements"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "medication" >Protein Supplements</label>
                   <br></br> <br></br>
               </Col>
 
                 <Col md = "4">
-     
+                  {
+                    (this.state.currentlyNotUnderAnyMedication == true || this.state.medicationDiabetes || this.state.migrane || this.state.medicationHighBloodPressure || this.state.medicationMentalHealthDisorder || this.state.steriodTherapy || this.state.hormonalContraception == true || this.state.seizureFit == true || this.state.proteinSupplements == true) && (
+                      <div>
+                          <label>For how long?</label>
+                          <br></br>
+                        {
+                          (this.state.currentlyNotUnderAnyMedication == true) && (
+                            <div>
+
+                              <Row>
+                                <Col md = "6">
+                                <Input type = "text" name = "currentlyNotUnderAnyMedicationDuration" onChange = {this.handleNumberInputChange} />
+                                </Col>
+                                <Col md = "6">
+                                     
+                              <Input type="select" name="currentlyNotUnderAnyMedicationDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+                              <option name = "duration" value = "Days" >Days</option>
+                              <option name = "duration" value = "Months" >Months</option>
+                              <option name = "duration" value = "Years" >Years</option>
+                                  </Input>
+                                  </Col>
+                              </Row>
+                              <br></br>
+                            </div>
+                          )
+                        }
+                        
+
+                        {
+                          (this.state.medicationDiabetes == true) && (
+                            <div>
+
+                              <Row>
+                                <Col md = "6">
+                                <Input type = "text" name = "medicationDiabetesDuration" onChange = {this.handleNumberInputChange} />
+                                </Col>
+                                <Col md = "6">
+                                     
+                              <Input type="select" name="medicationDiabetesDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+                              <option name = "duration" value = "Days" >Days</option>
+                              <option name = "duration" value = "Months" >Months</option>
+                              <option name = "duration" value = "Years" >Years</option>
+                                  </Input>
+                                  </Col>
+                              </Row>
+                              <br></br>
+                            </div>
+                          )
+                        }
+
+
+
+{
+  (this.state.migrane == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "migraneDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="migraneDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+
+      <br></br>
+    </div>
+  )
+}
+
+
+
+{
+  (this.state.medicationHighBloodPressure == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "medicationHighBloodPressureDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="medicationHighBloodPressureDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+      <br></br>
+    </div>
+  )
+}
+
+
+
+
+{
+  (this.state.medicationMentalHealthDisorder == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "medicationMentalHealthDisorderDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="medicationMentalHealthDisorderDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+      <br></br>
+    </div>
+  )
+}
+
+
+
+
+{
+  (this.state.steroidTherapy == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "steroidTherapyDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="steroidTherapyDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+      <br></br>
+    </div>
+  )
+}
+
+
+
+
+{
+  (this.state.hormonalContraception == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "hormonalContraceptionDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="hormonalContraceptionDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+      <br></br>
+    </div>
+  )
+}
+
+
+
+
+{
+  (this.state.seizureFit == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "seizureFitDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="seizureFitDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+
+      <br></br>
+    </div>
+  )
+}
+
+
+
+{
+  (this.state.proteinSupplements == true) && (
+    <div>
+
+      <Row>
+        <Col md = "6">
+        <Input type = "text" name = "proteinSupplementsDuration" onChange = {this.handleNumberInputChange} />
+        </Col>
+        <Col md = "6">
+             
+      <Input type="select" name="proteinSupplementsDurationType" id="medication" onChange = {this.handleDurationValueChange} >
+      <option name = "duration" value = "Days" >Days</option>
+      <option name = "duration" value = "Months" >Months</option>
+      <option name = "duration" value = "Years" >Years</option>
+          </Input>
+          </Col>
+      </Row>
+
+    </div>
+  )
+}
+
+
+                        
+                      </div>
+                    )
+                  }
                 </Col>
 
 
