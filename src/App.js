@@ -532,6 +532,7 @@ handleSubmit = (e) => {
             </Col>
             
             <Col md = "4">
+              <label>Which mmonth did you last get you peiods?</label>
                           <Row>
                           <Col md = "6">
                           <Input type = "text" name = "weightGained" onChange = {this.handleInputChange} />
@@ -555,7 +556,7 @@ handleSubmit = (e) => {
               <div>
               <Row>
                 <Col md = "4" >
-                <label >&#8226;&nbsp;Ignore Section</label>
+                <label >&#8226;&nbsp;Please enter details of all symptoms that you noticed apart from weight gain</label>
                 </Col>
 
                 <Col md = "4" >
@@ -749,7 +750,7 @@ handleSubmit = (e) => {
                 </Col>
                 <Col md = "4">
                         {
-                          (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && <React.Fragment>
+                          (this.state.missedPeriods == true) && <React.Fragment>
                                               <label>How many days ago was your last menstrual period</label>
                           <Row>
                           <Col md = "6">
@@ -1045,8 +1046,8 @@ handleSubmit = (e) => {
           <label >&#8226;&nbsp;Do you work out for more than 2.5 hours or 150 minutes per week?</label>
             </Col>
             <Col md = "4" >
-            <input type = "radio" name = "baby" value = "Yes" onChange = {this.handleWorkoutValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
-              <input type = "radio" name = "baby" value = "No" onChange = {this.handleWorkoutValue} /><label>&nbsp; No</label>
+            <input type = "radio" name = "work" value = "Yes" onChange = {this.handleWorkoutValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
+              <input type = "radio" name = "work" value = "No" onChange = {this.handleWorkoutValue} /><label>&nbsp; No</label>
             </Col>
             <Col md = "4">
               {
@@ -1075,8 +1076,8 @@ handleSubmit = (e) => {
           </ul>
             </Col>
             <Col md = "6" >
-            <input type = "radio" name = "baby" value = "Yes" onChange = {this.handleEatingFoodValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
-              <input type = "radio" name = "baby" value = "No" onChange = {this.handleEatingFoodValue} /><label>&nbsp; No</label>
+            <input type = "radio" name = "eat" value = "Yes" onChange = {this.handleEatingFoodValue} /><label>&nbsp; Yes</label>&nbsp;&nbsp;
+              <input type = "radio" name = "eat" value = "No" onChange = {this.handleEatingFoodValue} /><label>&nbsp; No</label>
             </Col>
          </Row>
                 
