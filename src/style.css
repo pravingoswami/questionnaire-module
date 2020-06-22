@@ -14,3 +14,8 @@ label{
 .symptom{
     padding-bottom: 7px;
 }
+
+.fiesrSection {
+    border: 1px solid black;
+    padding: 20px;
+}

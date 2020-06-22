@@ -421,6 +421,7 @@ handleSubmit = (e) => {
         {/* Section - 1 for personal detail */}
           <div>
             <form onSubmit = {this.handleSubmit} >
+              <div class = "fiesrSection" >
           <Row>
           <Col md = "4" >
           &#8226; &nbsp;<label>Please enter your Personal Detail.</label>
@@ -512,6 +513,9 @@ handleSubmit = (e) => {
         }
 
          </Row>
+
+
+        </div>
 
         <br></br>
         <br></br>
