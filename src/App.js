@@ -230,11 +230,14 @@ handleSubmit = (e) => {
       weight : this.state.weight,
       height : `${this.state.heightFeet} feet ${this.state.heightInch} inch`
     },
+
     measurements : {
       waiseSize : this.state.waistSize,
       hipSize : this.state.hipSize
     },
+
     hadBaby : this.state.hadBaby,
+
     existingCondition : {
       boolean : {
         hyperprolactemia : this.state.hyperprolactemia,
@@ -249,7 +252,68 @@ handleSubmit = (e) => {
         hypothyroidismDuration : `${this.state.hypothyroidismTime} ${this.state.hypothyroidismTimeType}` ,
         otherConditionDuration : `${this.state.otherConditionTime} ${this.state.otherConditionTimeType}` 
       }
+    },
+
+    anyOtherSymptoms : this.state.anyOtherSymptoms,
+
+    weightGainedInfo : {
+      weightGained : this.state.weightGained,
+      weightGainedDuration : `${this.state.weightGainedTime} ${this.state.weightGainedTimeType}`
+    },
+
+    symptomsInfoSection : {
+      hairLoss : {
+        hairLossBoolean : this.state.hairLoss,
+        hairLossDuration : `${this.state.hairLossTime} ${this.state.hairLossTimeType}`
+      },
+
+      acne : {
+        acneBoolean : this.state.acne,
+        acneDuration : `${this.state.acneTime} ${this.state.acneTimeType}`
+      },
+
+      missedPeriods : {
+        missedPeriodsBoolean : this.state.missedPeriods,
+        missedPeriodsDuration : `${this.state.missedPeriodsTime} ${this.state.missedPeriodsTimeType}`
+      },
+
+      extraHair : {
+        extraHairBoolean : this.state.extraHair,
+        extraHairDuration : `${this.state.extraHairTime} ${this.state.extraHairTimeType}`
+      },
+
+      constipation : {
+        constipationBoolean : this.state.constipation
+      },
+
+      skinPigmentation : {
+        skinPigmentationBoolean : this.state.skinPigmentation
+      },
+
+      slowHeartbeat : {
+        slowHeartbeatBoolean : this.state.slowHeartbeat
+      },
+
+      headache : {
+        headacheBoolean : this.state.headache,
+        headacheDuration : `${this.state.headacheTime} ${this.state.headacheTimeType}`
+      },
+
+      dischargeNipple : {
+        dischargeNippleBoolean : this.state.dischargeNipple
+      },
+
+      moodSwings : {
+        moodSwingsBoolean : this.state.moodSwings
+      },
+
+      otherSymptom : {
+        otherSymptomBoolean : this.state.booleanOtherSymptom,
+        otherSymptomName : this.state.otherConditionName,
+        otherSymptomDuration : `${this.state.otherSymptomTime} ${this.state.otherSymptomTimeType}`
+      }
     }
+
   }
   console.log(formData)
 }
