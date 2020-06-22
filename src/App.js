@@ -223,7 +223,7 @@ handleDurationValueChange = (e) => {
 
 handleSubmit = (e) => {
   e.preventDefault()
-  console.log(this.state)
+  console.log(`${this.state.hyperprolactemiaTime} ${this.state.hyperprolactemiaTimeType}`)
   const formData = {
     vitals : {
       name : this.state.name,
@@ -239,18 +239,26 @@ handleSubmit = (e) => {
     hadBaby : this.state.hadBaby,
 
     existingCondition : {
-      boolean : {
-        hyperprolactemia : this.state.hyperprolactemia,
-        pcosPcod : this.state.pcosPcod,
-        hypothyroidism : this.state.hypothyroidism,
-        otherCondition : this.state.otherCondition,
-        otherConditionName : this.state.otherConditionName
+
+      hyperprolactemia : {
+        hyperprolactemiaBoolean : this.state.hyperprolactemia,
+        hyperprolactemiaDuration : `${this.state.hyperprolactemiaTime} ${this.state.hyperprolactemiaTimeType}`
       },
-      duration : {
-        hyperprolactemiaDuration : `${this.state.hyperprolactemiaTime} ${this.state.hyperprolactemiaTimeType}` ,
-        pcosPcodDuration : `${this.state.pcosPcodTime} ${this.state.pcosPcodTimeType}` ,
-        hypothyroidismDuration : `${this.state.hypothyroidismTime} ${this.state.hypothyroidismTimeType}` ,
-        otherConditionDuration : `${this.state.otherConditionTime} ${this.state.otherConditionTimeType}` 
+
+      pcosPcod : {
+        pcosPcodBoolean : this.state.pcosPcod,
+        pcosPcodDuration : `${this.state.pcosPcodTime} ${this.state.pcosPcodTimeType}`
+      },
+
+      hypothyroidism : {
+        hypothyroidismBoolean : this.state.hypothyroidism,
+        hypothyroidismDuration : `${this.state.hypothyroidismTime} ${this.state.hypothyroidismTimeType}`
+      },
+
+      otherCondition : {
+        otherConditionBoolean : this.state.otherCondition,
+        otherConditionName : this.state.otherConditionName,
+        otherConditionDuration : `${this.state.otherConditionTime} ${this.state.otherConditionTimeType}`
       }
     },
 
