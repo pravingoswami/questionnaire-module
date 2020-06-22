@@ -379,10 +379,26 @@ handleSubmit = (e) => {
 
     eatingFoodValue : this.state.eatingFoodValue,
 
-    
+    sleepHour : this.state.sleepHour,
 
+    familyMemberHealthInfo : {
+      highBloodPressure : this.state.highBloodPressure,
+      highCholesterol : this.state.highCholesterol,
+      hypothyroidism : this.state.familyHypothyroidism,
+      diabetes : this.state.diabetes,
+      pcos : this.state.pcos
+    },
 
+    report : this.state.reportFirst,
 
+    prescriptions : this.state.reportSecond,
+
+    expertInfo : {
+      nutritionExpert : this.state.nutritionExpert,
+      yogaTherapist : this.state.yogaTherapist,
+      dermatologist : this.state.dermatologist,
+      psychiatrist : this.state.psychiatrist,
+    }
   }
   console.log(formData)
 }
