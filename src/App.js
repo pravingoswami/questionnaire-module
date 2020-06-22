@@ -224,6 +224,34 @@ handleDurationValueChange = (e) => {
 handleSubmit = (e) => {
   e.preventDefault()
   console.log(this.state)
+  const formData = {
+    vitals : {
+      name : this.state.name,
+      weight : this.state.weight,
+      height : `${this.state.heightFeet} feet ${this.state.heightInch} inch`
+    },
+    measurements : {
+      waiseSize : this.state.waistSize,
+      hipSize : this.state.hipSize
+    },
+    hadBaby : this.state.hadBaby,
+    existingCondition : {
+      boolean : {
+        hyperprolactemia : this.state.hyperprolactemia,
+        pcosPcod : this.state.pcosPcod,
+        hypothyroidism : this.state.hypothyroidism,
+        otherCondition : this.state.otherCondition,
+        otherConditionName : this.state.otherConditionName
+      },
+      duration : {
+        hyperprolactemiaDuration : `${this.state.hyperprolactemiaTime} ${this.state.hyperprolactemiaTimeType}` ,
+        pcosPcodDuration : `${this.state.pcosPcodTime} ${this.state.pcosPcodTimeType}` ,
+        hypothyroidismDuration : `${this.state.hypothyroidismTime} ${this.state.hypothyroidismTimeType}` ,
+        otherConditionDuration : `${this.state.otherConditionTime} ${this.state.otherConditionTimeType}` 
+      }
+    }
+  }
+  console.log(formData)
 }
 
 
