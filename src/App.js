@@ -312,7 +312,76 @@ handleSubmit = (e) => {
         otherSymptomName : this.state.otherConditionName,
         otherSymptomDuration : `${this.state.otherSymptomTime} ${this.state.otherSymptomTimeType}`
       }
-    }
+    },
+
+    menstrualProblems : {
+      menstrualProblemsBoolean : {
+        stoppedPeriods : this.state.stoppedPeriods,
+        lessThanSixCycles : this.state.lessThanSixCycles,
+        moreThanSixCycles : this.state.moreThanSixCycles,
+        countinuosFlow : this.state.countinuosFlow
+      },
+      lastPeriodDuration : `${this.state.lastPeriodTime} ${this.state.lastPeriodTimeType}`
+    },
+
+    medicationsInfo : {
+
+      currentlyNotUnderAnyMedication : {
+        currentlyNotUnderAnyMedicationBoolean : this.state.currentlyNotUnderAnyMedication,
+        currentlyNotUnderAnyMedicationDuration : `${this.state.currentlyNotUnderAnyMedicationTime} ${this.state.currentlyNotUnderAnyMedicationTimeType}`
+      },
+
+      medicationDiabetes : {
+        medicationDiabetesBoolean : this.state.medicationDiabetes,
+        medicationDiabetesDuration : `${this.state.medicationDiabetesTime} ${this.state.medicationDiabetesTimeType}`
+      },
+
+      migrane : {
+        migraneBoolean : this.state.migrane,
+        migraneDuration : `${this.state.migraneTime} ${this.state.migraneTimeType}`
+      },
+
+      medicationHighBloodPressure : {
+        medicationHighBloodPressureBoolean : this.state.medicationHighBloodPressure,
+        medicationHighBloodPressureDuration : `${this.state.medicationHighBloodPressureTime} ${this.state.medicationHighBloodPressureTimeType}`
+      },
+
+      medicationMentalHealthDisorder : {
+        medicationMentalHealthDisorderBoolean : this.state.medicationMentalHealthDisorder,
+        medicationMentalHealthDisorderDuration : `${this.state.medicationMentalHealthDisorderTime} ${this.state.medicationMentalHealthDisorderTimeType}`
+      },
+
+      steroidTherapy : {
+        steroidTherapyBoolean : this.state.steroidTherapy,
+        steroidTherapyDuration : `${this.state.steroidTherapyTime} ${this.state.steroidTherapyTimeType}`
+      },
+
+      hormonalContraception : {
+        hormonalContraceptionBoolean : this.state.hormonalContraception,
+        hormonalContraceptionDuration : `${this.state.hormonalContraceptionTime} ${this.state.hormonalContraceptionTimeType}`
+      },
+
+      seizureFit : {
+        seizureFitBoolean : this.state.seizureFit,
+        seizureFitDuration : `${this.state.seizureFitTime} ${this.state.seizureFitTimeType}`
+      },
+
+      proteinSupplements : {
+        proteinSupplementsBoolean : this.state.proteinSupplements,
+        proteinSupplementsDuration : `${this.state.proteinSupplementsTime} ${this.state.proteinSupplementsTimeType}`
+      }
+    },
+
+    workOutInfo : {
+      workoutValue : this.state.workoutValue,
+      workoutHour : this.state.workoutHour
+    },
+
+    eatingFoodValue : this.state.eatingFoodValue,
+
+    
+
+
 
   }
   console.log(formData)
