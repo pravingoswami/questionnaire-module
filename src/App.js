@@ -177,13 +177,9 @@ class App extends React.Component{
 };
 
 handleNumberInputChange = (e) => {
-  if(!isNaN(e.target.value)){
-    return alert('Enter valid input')
-  } else {
-    this.setState({
-      [e.target.name] : e.target.value
-    })
-  }
+  this.setState({
+    [e.target.name] : e.target.value
+  })
 }
 
 handlePurposeOfConsultations = (e) => {
