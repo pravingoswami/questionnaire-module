@@ -103,7 +103,6 @@ class App extends React.Component{
 
             steroidTherapy : false,
             hormonalContraception : false,
-            seizureFit : false,
             proteinSupplements : false,
             medicationDiabetes : false,
             medicationHighBloodPressure : false,
@@ -504,7 +503,7 @@ handleSubmit = (e) => {
             </Col>
             
         {
-          (this.state.purposeOfConsultation == "other") && (
+          (this.state.purposeOfConsultation === "other") && (
             <Col md = "3" >
             <label htmlFor = "purposeOfConsultationReason" >Please specify the reason</label>
             <input type = "text" width = "100%" name = "purposeOfConsultationReason" value = {this.state.purposeOfConsultationReason} onChange = {this.handleInputChange} ></input>
@@ -530,7 +529,7 @@ handleSubmit = (e) => {
          </Row>
           <br></br>
         {
-          (this.state.purposeOfConsultation != "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && (
+          (this.state.purposeOfConsultation !== "Need to get my prescription renewed" && this.state.purposeOfConsultation !== '' ) && (
             <div>
                <Row>
           <Col md = "4" >
@@ -549,22 +548,22 @@ handleSubmit = (e) => {
                   <br></br> <br></br>
                    &nbsp; &nbsp;<input type = "checkbox" name = "otherCondition" value = "other" onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label>other</label>
                   <br></br> <br></br>
-                  {(this.state.otherCondition == true && (<input type = "text" name = "otherConditionName" value = {this.state.otherConditionName} onChange = {this.handleInputChange} placeholder = "Mention Condition" />))}
+                  {(this.state.otherCondition === true && (<input type = "text" name = "otherConditionName" value = {this.state.otherConditionName} onChange = {this.handleInputChange} placeholder = "Mention Condition" />))}
                   <br></br>
                 </Col>
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+                  (this.state.hyperprolactemia === true || this.state.pcosPcod === true || this.state.hypothyroidism || this.state.otherCondition === true) && (
                     <React.Fragment>
                           <label>Severity of the Condition</label>
                           <br></br>
-                          {(this.state.hyperprolactemia == true) && (<label>Slider</label>)}
+                          {(this.state.hyperprolactemia === true) && (<label>Slider</label>)}
                           <br></br> <br></br>
-                          {(this.state.pcosPcod == true) && (<label>Slider</label>)}
+                          {(this.state.pcosPcod === true) && (<label>Slider</label>)}
                           <br></br> <br></br>
-                          {(this.state.hypothyroidism == true) && (<label>Slider</label>)}
+                          {(this.state.hypothyroidism === true) && (<label>Slider</label>)}
                           <br></br> <br></br>
-                          {(this.state.otherCondition == true) && (<label>Slider</label>)}
+                          {(this.state.otherCondition === true) && (<label>Slider</label>)}
                           <br></br> <br></br>
 
                     </React.Fragment>
@@ -576,15 +575,15 @@ handleSubmit = (e) => {
                 </Col>  
                 <Col md = "4" > 
                 {
-                  (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+                  (this.state.hyperprolactemia === true || this.state.pcosPcod === true || this.state.hypothyroidism || this.state.otherCondition === true) && (
                     <React.Fragment>
                       <label>Duration of the Condition</label>
                       <br></br>
-                      {/* {(this.state.hyperprolactemia == true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
+                      {/* {(this.state.hyperprolactemia === true) && (<input type = "text" name = "hyperprolactemiaTime" placeholder = "Hyperprolactemia" value = {this.state.hyperprolactemiaTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br> */}
 
                       {
-                    (this.state.hyperprolactemia == true) && (
+                    (this.state.hyperprolactemia === true) && (
                       <div>
 
                         <Row>
@@ -606,7 +605,7 @@ handleSubmit = (e) => {
                   }
 
 {
-                    (this.state.pcosPcod == true) && (
+                    (this.state.pcosPcod === true) && (
                       <div>
 
                         <Row>
@@ -628,7 +627,7 @@ handleSubmit = (e) => {
                   }
 
 {
-                    (this.state.hypothyroidism == true) && (
+                    (this.state.hypothyroidism === true) && (
                       <div>
 
                         <Row>
@@ -649,7 +648,7 @@ handleSubmit = (e) => {
                     )
                   }
                          {
-                    (this.state.otherCondition == true) && (
+                    (this.state.otherCondition === true) && (
                       <div>
 
                         <Row>
@@ -671,11 +670,11 @@ handleSubmit = (e) => {
                   }
 
 {/* 
-                      {(this.state.pcosPcod == true) && (<input type = "text" name = "pcosPcodTime" placeholder = "PCOS/PCOD" value = {this.state.pcosPcodTime} onChange = {this.handleInputChange} />)}
+                      {(this.state.pcosPcod === true) && (<input type = "text" name = "pcosPcodTime" placeholder = "PCOS/PCOD" value = {this.state.pcosPcodTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
-                      {(this.state.hypothyroidism == true) && (<input type = "text" name = "hypothyroidismTime" placeholder = "Hypothyroidism" value = {this.state.hypothyroidismTime} onChange = {this.handleInputChange} />)}
+                      {(this.state.hypothyroidism === true) && (<input type = "text" name = "hypothyroidismTime" placeholder = "Hypothyroidism" value = {this.state.hypothyroidismTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br>
-                      {(this.state.otherCondition == true) && (<input type = "text" name = "otherConditionTime" placeholder = "Other" value = {this.state.otherConditionTime} onChange = {this.handleInputChange} />)}
+                      {(this.state.otherCondition === true) && (<input type = "text" name = "otherConditionTime" placeholder = "Other" value = {this.state.otherConditionTime} onChange = {this.handleInputChange} />)}
                       <br></br> <br></br> */}
                     </React.Fragment>
                   )
@@ -687,7 +686,7 @@ handleSubmit = (e) => {
                 <br></br>
 
            {
-              (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+              (this.state.hyperprolactemia === true || this.state.pcosPcod === true || this.state.hypothyroidism || this.state.otherCondition === true) && (
                 <Row>
                   <Col md = "4" >
           <label>&#8226;&nbsp;Any symptoms that you are particularly concerned about?</label>      
@@ -733,7 +732,7 @@ handleSubmit = (e) => {
          <br></br>
 
          {
-            (this.state.hyperprolactemia == true || this.state.pcosPcod == true || this.state.hypothyroidism || this.state.otherCondition == true) && (
+            (this.state.hyperprolactemia === true || this.state.pcosPcod === true || this.state.hypothyroidism || this.state.otherCondition === true) && (
               <div>
               <Row>
                 <Col md = "4" >
@@ -765,18 +764,18 @@ handleSubmit = (e) => {
                   <br></br> <br></br>
                   &nbsp; &nbsp;<input type = "checkbox" name = "booleanOtherSymptom" value = "booleanOtherSymptom"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "symptom" >Others</label>
                   <br></br> 
-                  {(this.state.booleanOtherSymptom == true && (<input type = "text" name = "otherSymptom" value = {this.state.otherSymptom} onChange = {this.handleInputChange} placeholder = "Mention Symptom" />))}
+                  {(this.state.booleanOtherSymptom === true && (<input type = "text" name = "otherSymptom" value = {this.state.otherSymptom} onChange = {this.handleInputChange} placeholder = "Mention Symptom" />))}
                   </Col>
 
                   <Col md = "4" >
                     {
-                      (this.state.hairLoss == true || this.state.acne == true || this.state.missedPeriods == true || this.state.extraHair == true || this.state.headache == true || this.state.otherSymptom == true ) && (
+                      (this.state.hairLoss === true || this.state.acne === true || this.state.missedPeriods === true || this.state.extraHair === true || this.state.headache === true || this.state.otherSymptom === true ) && (
                         <label>Since how long have you been experiencing this symptom?</label>
                       )
                     }
 
                   {
-                    (this.state.hairLoss == true) && (
+                    (this.state.hairLoss === true) && (
                       <div>
                      
 <br></br>
@@ -799,7 +798,7 @@ handleSubmit = (e) => {
                   }
 
 {
-                    (this.state.acne == true) && (
+                    (this.state.acne === true) && (
                       <div>
 
                         <Row>
@@ -822,7 +821,7 @@ handleSubmit = (e) => {
 
 
 {
-                    (this.state.missedPeriods == true) && (
+                    (this.state.missedPeriods === true) && (
                       <div>
 
                         <Row>
@@ -844,7 +843,7 @@ handleSubmit = (e) => {
                   }
 
 {
-                    (this.state.extraHair == true) && (
+                    (this.state.extraHair === true) && (
                       <div>
 
                         <Row>
@@ -866,7 +865,7 @@ handleSubmit = (e) => {
                   }
 
 {
-                    (this.state.headache == true) && (
+                    (this.state.headache === true) && (
                       <div>
 
                         <Row>
@@ -889,7 +888,7 @@ handleSubmit = (e) => {
 
                   
 {
-                    (this.state.booleanOtherSymptom == true) && (
+                    (this.state.booleanOtherSymptom === true) && (
                       <div>
 
                         <Row>
@@ -915,10 +914,10 @@ handleSubmit = (e) => {
               <br></br>
               <Row>
                 <Col md = "4">
-                {(this.state.missedPeriods == true) && <label >&#8226;&nbsp;In relation to your menstrual problems, please select all statements that apply to you</label>}
+                {(this.state.missedPeriods === true) && <label >&#8226;&nbsp;In relation to your menstrual problems, please select all statements that apply to you</label>}
                 </Col>
                 <Col md = "4">
-                {(this.state.missedPeriods == true) && <React.Fragment>
+                {(this.state.missedPeriods === true) && <React.Fragment>
                    &nbsp; &nbsp;<input type = "checkbox" name = "stoppedPeriods" value = "stoppedPeriods"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > Stopped getting menstrual periods </label>
                   <br></br> <br></br>
                   &nbsp; &nbsp;<input type = "checkbox" name = "lessThanSixCycles" value = "lessThanSixCycles"  onChange = {this.handleExistionConditionsChange} />&nbsp;&nbsp;<label class = "period" > Less than 6 cycles a year </label>
@@ -931,7 +930,7 @@ handleSubmit = (e) => {
                 </Col>
                 <Col md = "4">
                         {
-                          (this.state.missedPeriods == true) && <React.Fragment>
+                          (this.state.missedPeriods === true) && <React.Fragment>
                                               <label>How many days ago was your last menstrual period</label>
                           <Row>
                           <Col md = "6">
@@ -987,12 +986,12 @@ handleSubmit = (e) => {
 
                 <Col md = "4">
                   {
-                    (this.state.currentlyNotUnderAnyMedication == true || this.state.medicationDiabetes || this.state.migrane || this.state.medicationHighBloodPressure || this.state.medicationMentalHealthDisorder || this.state.steriodTherapy || this.state.hormonalContraception == true || this.state.seizureFit == true || this.state.proteinSupplements == true) && (
+                    (this.state.currentlyNotUnderAnyMedication === true || this.state.medicationDiabetes || this.state.migrane || this.state.medicationHighBloodPressure || this.state.medicationMentalHealthDisorder || this.state.steriodTherapy || this.state.hormonalContraception === true || this.state.seizureFit === true || this.state.proteinSupplements === true) && (
                       <div>
                           <label>For how long?</label>
                           <br></br>
                         {
-                          (this.state.currentlyNotUnderAnyMedication == true) && (
+                          (this.state.currentlyNotUnderAnyMedication === true) && (
                             <div>
 
                               <Row>
@@ -1015,7 +1014,7 @@ handleSubmit = (e) => {
                         
 
                         {
-                          (this.state.medicationDiabetes == true) && (
+                          (this.state.medicationDiabetes === true) && (
                             <div>
 
                               <Row>
@@ -1039,7 +1038,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.migrane == true) && (
+  (this.state.migrane === true) && (
     <div>
 
       <Row>
@@ -1064,7 +1063,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.medicationHighBloodPressure == true) && (
+  (this.state.medicationHighBloodPressure === true) && (
     <div>
 
       <Row>
@@ -1089,7 +1088,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.medicationMentalHealthDisorder == true) && (
+  (this.state.medicationMentalHealthDisorder === true) && (
     <div>
 
       <Row>
@@ -1114,7 +1113,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.steroidTherapy == true) && (
+  (this.state.steroidTherapy === true) && (
     <div>
 
       <Row>
@@ -1138,7 +1137,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.hormonalContraception == true) && (
+  (this.state.hormonalContraception === true) && (
     <div>
 
       <Row>
@@ -1163,7 +1162,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.seizureFit == true) && (
+  (this.state.seizureFit === true) && (
     <div>
 
       <Row>
@@ -1188,7 +1187,7 @@ handleSubmit = (e) => {
 
 
 {
-  (this.state.proteinSupplements == true) && (
+  (this.state.proteinSupplements === true) && (
     <div>
 
       <Row>
@@ -1232,7 +1231,7 @@ handleSubmit = (e) => {
             </Col>
             <Col md = "4">
               {
-                (this.state.workoutValue == "No") && (
+                (this.state.workoutValue === "No") && (
                   <React.Fragment>
                     <label>For how many hours per week?</label> 
                     <input type = "text" name = "workoutHour" value = {this.state.workoutHour} onChange = {this.handleNumberInputChange} />
